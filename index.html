@@ -7,84 +7,96 @@
     <title>Recipe Finder</title>
     <script src="js/script.js" async></script>
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans|Literata|Lobster&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
       <h1>Recipe Finder</h1>
-    </header>
-    <main>
+      <p>
+        All recipes come from the
+        <a href="https://www.food2fork.com/">Food2Fork API</a>
+      </p>
       <form>
-        Enter ingredient:<br />
-        <input type="text" name="ingredient" id="ingredientInput" value="" />
-        <button type="button" id="add">Add</button>
-        <button type="button" id="clear">Clear All</button><br />
+        Enter ingredient:
+        <div class="input-settings">
+          <input type="text" name="ingredient" id="ingredientInput" value="" />
+          <div class="buttons">
+            <button class="btn reset" type="button" id="add">Add</button>
+            <button class="btn reset" type="button" id="clear">
+              Clear All
+            </button>
+          </div>
+        </div>
         <p>Results: <span id="results"></span></p>
         <ul class="ingredient-list"></ul>
-        <input type="submit" value="Submit" id="submit" />
+        <input class="reset" type="button" value="Search" id="submit" />
       </form>
-      <h2 id="display-ingredients"></h2>
-      <ul class="cards">
-        <!-- <li class="card">
-          <figure>
-            <img src="#" alt="Lines on a tropical leaf." />
-            <figcaption class="caption">
-              <h3 class="caption">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Praesentium repellendus rerum incidunt voluptate quia maxime
-                cumque illo optio, exercitationem quisquam.
-              </h3>
-            </figcaption>
-          </figure>
-        </li>
-        <li class="card">
-          <figure>
-            <img src="#" alt="Lines on a tropical leaf." />
-            <figcaption>
-              <h3 class="caption">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Sapiente rem a cum dolores asperiores doloribus modi, libero
-                quasi quia dicta.
-              </h3>
-            </figcaption>
-          </figure>
-        </li>
-        <li class="card">
-          <figure>
-            <img src="#" alt="Lines on a tropical leaf." />
-            <figcaption class="caption">
-              <h3 class="caption">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta
-                aspernatur, animi aliquid sunt accusantium dolorem modi quaerat
-                recusandae possimus quia!
-              </h3>
-            </figcaption>
-          </figure>
-        </li>
-        <li class="card">
-          <figure>
-            <img src="#" alt="Lines on a tropical leaf." />
-            <figcaption class="caption">
-              <h3 class="caption">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Minima, neque commodi? Consectetur magnam reiciendis maiores
-                modi sequi quisquam perferendis possimus!
-              </h3>
-            </figcaption>
-          </figure>
-        </li>
-        <li class="card">
-          <figure>
-            <img src="#" alt="Lines on a tropical leaf." />
-            <figcaption class="caption">
-              <h3 class="caption">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
-                quod cupiditate voluptate minus error exercitationem minima
-                explicabo aperiam modi asperiores?
-              </h3>
-            </figcaption>
-          </figure>
-        </li> -->
-      </ul>
+    </header>
+    <main>
+      <div>
+        <h2 id="display-ingredients">
+          Ingredients: strawberry, banana, chocolate
+        </h2>
+        <ul class="cards">
+          <!-- <li class="card">
+            <figure>
+              <img src="images/camel.jpg" alt="Lines on a tropical leaf." />
+            </figure>
+            <div class="bottom-card">
+              <h3>Lorem ipsum dolor sit.</h3>
+              <a href="#">View recipe</a>
+            </div>
+          </li>
+          <li class="card">
+            <figure>
+              <img src="images/fox.jpg" alt="Lines on a tropical leaf." />
+            </figure>
+            <div class="bottom-card">
+              <h3>Lorem ipsum dolor sit.</h3>
+              <a href="#">View recipe</a>
+            </div>
+          </li>
+          <li class="card">
+            <figure>
+              <img src="images/lion.jpg" alt="Lines on a tropical leaf." />
+            </figure>
+            <div class="bottom-card">
+              <h3>Lorem ipsum dolor sit.</h3>
+              <a href="#">View recipe</a>
+            </div>
+          </li>
+          <li class="card">
+            <figure>
+              <img src="images/parrot.jpg" alt="Lines on a tropical leaf." />
+            </figure>
+            <div class="bottom-card">
+              <h3>Lorem ipsum dolor sit.</h3>
+              <a href="#">View recipe</a>
+            </div>
+          </li>
+          <li class="card">
+            <figure>
+              <img src="images/squirrel.jpeg" alt="Lines on a tropical leaf." />
+            </figure>
+            <div class="bottom-card">
+              <h3>Lorem ipsum dolor sit.</h3>
+              <a href="#">View recipe</a>
+            </div>
+          </li>
+          <li class="card">
+            <figure>
+              <img src="images/tiger.jpeg" alt="Lines on a tropical leaf." />
+            </figure>
+            <div class="bottom-card">
+              <h3>Lorem ipsum dolor sit.</h3>
+              <a href="#">View recipe</a>
+            </div>
+          </li> -->
+        </ul>
+      </div>
     </main>
   </body>
 </html>

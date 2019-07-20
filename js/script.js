@@ -1,19 +1,23 @@
 let ingredients = [];
+let onloadRecipes = false;
 
-function requestData(e) {
-  e.preventDefault();
-
+function requestData() {
   var xmlhttp = new XMLHttpRequest();
 
   var imagesURL = [];
   var titles = [];
   var sourceURL = [];
 
-  if (!addIngredients()) {
-    return;
+  if (!onloadRecipes) {
+    if (!addIngredients()) {
+      return;
+    }
   }
 
-  removeExistingElements();
+  onloadRecipes = false;
+
+  clearIngredientList();
+  clearRecipes();
 
   let url =
     "https://www.food2fork.com/api/search?key=19d852284c0af6e8548dbb3aff623650&q=";
@@ -21,14 +25,16 @@ function requestData(e) {
   for (let i = 0; i < ingredients.length; i++) {
     url += ingredients[i] + ",";
   }
-  console.log(ingredients);
-  console.log(url);
 
   xmlhttp.open("GET", url, false);
 
   xmlhttp.onreadystatechange = () => {
     if (xmlhttp.readyState === xmlhttp.DONE && xmlhttp.status === 200) {
       var myObj = JSON.parse(xmlhttp.responseText);
+      if (myObj.hasOwnProperty("error")) {
+        alert("Sorry, exceeded allowed API calls for the day.");
+        return 0;
+      }
       var results = document.querySelector("#results");
       if (myObj.count === 0) {
         results.innerHTML = 0;
@@ -58,30 +64,30 @@ function populate(count, imagesURL, titles, sourceURL) {
   for (let i = 0; i < count; i++) {
     //Create elements and add classes
     var li = document.createElement("li");
-    var anchor = document.createElement("a");
-    anchor.className = "card";
+    li.className = "card";
     var figure = document.createElement("figure");
     var img = document.createElement("img");
-    var figCaption = document.createElement("figcaption");
-    figCaption.className = "caption";
+    var div = document.createElement("div");
+    div.className = "bottom-card";
     var title = document.createElement("h3");
-    title.className = "caption";
+    var anchor = document.createElement("a");
 
     //Populate elements
     img.src = imagesURL[i];
     title.innerHTML = titles[i];
+    anchor.innerHTML = "View recipe";
     anchor.href = sourceURL[i];
 
     //Add elements to document
-    figCaption.appendChild(title);
     figure.appendChild(img);
-    figure.appendChild(figCaption);
+    div.appendChild(title);
+    div.appendChild(anchor);
     li.appendChild(figure);
-    anchor.appendChild(li);
-    document.querySelector(".cards").appendChild(anchor);
+    li.appendChild(div);
+    document.querySelector(".cards").appendChild(li);
   }
 
-  //Show entered ingredients and reset ingredients array
+  //Display added ingredients and reset ingredients array
   let ingredientDisplay = document.querySelector("#display-ingredients");
   ingredientDisplay.innerHTML = "Ingredients: ";
   for (let i = 0; i < ingredients.length; i++) {
@@ -93,12 +99,14 @@ function populate(count, imagesURL, titles, sourceURL) {
   ingredients = [];
 }
 
-function removeExistingElements() {
+function clearIngredientList() {
   let ingredientList = document.querySelectorAll(".ingredient-list li");
   for (let i = 0; i < ingredientList.length; i++) {
     document.querySelector(".ingredient-list").removeChild(ingredientList[i]);
   }
+}
 
+function clearRecipes() {
   let list = document.querySelector(".cards");
   let anchors = document.querySelectorAll(".card");
   for (let i = 0; i < anchors.length; i++) {
@@ -110,7 +118,6 @@ function addIngredients(e) {
   let ingredientInput = document.querySelector("#ingredientInput").value;
   if (ingredientInput.length > 0) {
     //IF input not empty, push to array and return true
-
     if (!ingredients.includes(ingredientInput)) {
       ingredients.push(ingredientInput);
       document.querySelector("form").reset();
@@ -120,7 +127,6 @@ function addIngredients(e) {
     } else {
       alert("Ingredient you are trying to add is already in the list.");
     }
-
     return true;
   } else if (ingredientInput.length == 0 && ingredients.length > 0) {
     //If user try to add with empty input, return false
@@ -138,5 +144,11 @@ function addIngredients(e) {
 document.querySelector("#submit").addEventListener("click", requestData);
 document.querySelector("#add").addEventListener("click", addIngredients);
 document.querySelector("#clear").addEventListener("click", () => {
+  clearIngredientList();
   ingredients = [];
+});
+window.addEventListener("load", () => {
+  ingredients = ["strawberry", "banana", "chocolate"];
+  onloadRecipes = true;
+  requestData();
 });

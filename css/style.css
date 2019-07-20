@@ -1,1 +1,143 @@
 /* li .cards should be INLINE-BLOCK */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* General Styling */
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  border: 0;
+  width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* User Interface */
+header {
+  background: #220901;
+  color: #9b9b9b;
+  text-align: center;
+  border-bottom: solid black 2px;
+  padding: 2em;
+  font-size: 1.5em;
+  font-family: "Literata", serif;
+}
+
+h1 {
+  font-family: "Lobster", cursive;
+  padding-bottom: 0.5em;
+  font-size: 4em;
+}
+
+header p {
+  padding-bottom: 1em;
+}
+
+#ingredientInput {
+  height: 2.2em;
+  width: 20em;
+}
+
+.input-settings {
+  /* width: 20em; */
+}
+
+.buttons {
+}
+
+.reset {
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.btn {
+  background: #701509;
+  padding: 0.3em;
+  margin: 0.5em 0.1em;
+}
+/* Cards */
+
+body {
+  background: #701509;
+}
+
+main {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+h2 {
+  padding: 1em;
+}
+
+.card {
+  display: block;
+  background: #bc3908;
+  margin: 1em 0;
+  border: solid black 2px;
+  text-align: center;
+}
+
+.bottom-card {
+  padding: 0.4em 0 0.8em 0;
+  background: #621708;
+}
+
+.bottom-card h3 {
+  padding-bottom: 0.7em;
+}
+
+.bottom-card a {
+  color: black;
+  padding: 0.3em 3em;
+  border: solid black 1px;
+  border-radius: 80px;
+}
+
+/* CSS Grid for wider screens */
+@supports (grid-area: auto) {
+  @media screen and (min-width: 400px) {
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      grid-gap: 0.5em;
+      align-items: center;
+    }
+
+    .card {
+      margin: 0;
+    }
+    .card a {
+      width: 100%;
+    }
+
+    .caption {
+      display: flex;
+      align-items: flex-end;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    .cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* .card {
+      display: flex;
+      flex-direction: row;
+    } */
+  }
+}
