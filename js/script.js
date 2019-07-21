@@ -37,8 +37,9 @@ function requestData() {
       }
       var results = document.querySelector("#results");
       if (myObj.count === 0) {
-        results.innerHTML = 0;
+        results.innerHTML = "No recipes found with these ingredients.";
         alert("Sorry, no recipes with these ingredients.");
+        ingredients = [];
         return 0;
       }
       results.innerHTML = myObj.count;
@@ -84,6 +85,7 @@ function populate(count, imagesURL, titles, sourceURL) {
     div.appendChild(anchor);
     li.appendChild(figure);
     li.appendChild(div);
+
     document.querySelector(".cards").appendChild(li);
   }
 
@@ -122,7 +124,16 @@ function addIngredients(e) {
       ingredients.push(ingredientInput);
       document.querySelector("form").reset();
       let ingredientElem = document.createElement("li");
-      ingredientElem.innerHTML = ingredientInput;
+      // let ingredientBtn = document.createElement("button");
+      // ingredientBtn.className = "delete reset";
+      // let deleteIcon = document.createElement("i");
+      // deleteIcon.className = "fas fa-minus-square";
+      // ingredientBtn.appendChild(deleteIcon);
+      // ingredientElem.appendChild(document.createTextNode(ingredientInput));
+      // ingredientElem.appendChild(ingredientBtn);
+      ingredientElem.innerHTML =
+        ingredientInput +
+        '<button class="delete reset"><i class="fas fa-minus-square"></i></button>';
       document.querySelector(".ingredient-list").appendChild(ingredientElem);
     } else {
       alert("Ingredient you are trying to add is already in the list.");
@@ -141,14 +152,35 @@ function addIngredients(e) {
   }
 }
 
+function deleteIngredient(e) {
+  e.preventDefault();
+
+  let ingredientText = "";
+  //Visually deletes ingredient from ingredient list
+  if (e.target.className == "fas fa-minus-square") {
+    ingredientText = e.target.parentElement.previousSibling.data;
+    let li = e.target.parentElement.parentElement;
+    document.querySelector(".ingredient-list").removeChild(li);
+  }
+  //Deletes ingredient from ingredients array
+  for (var i = 0; i < ingredients.length; i++) {
+    if (ingredients[i] == ingredientText) {
+      ingredients.splice(i, 1);
+    }
+  }
+}
+
 document.querySelector("#submit").addEventListener("click", requestData);
 document.querySelector("#add").addEventListener("click", addIngredients);
 document.querySelector("#clear").addEventListener("click", () => {
   clearIngredientList();
   ingredients = [];
 });
-window.addEventListener("load", () => {
-  ingredients = ["strawberry", "banana", "chocolate"];
-  onloadRecipes = true;
-  requestData();
-});
+document
+  .querySelector(".ingredient-list")
+  .addEventListener("click", deleteIngredient);
+// window.addEventListener("load", () => {
+//   ingredients = ["strawberry", "banana", "chocolate"];
+//   onloadRecipes = true;
+//   requestData();
+// });

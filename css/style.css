@@ -24,6 +24,7 @@ a {
 
 /* User Interface */
 header {
+  position: relative;
   background: #220901;
   color: #9b9b9b;
   text-align: center;
@@ -41,6 +42,13 @@ h1 {
 
 header p {
   padding-bottom: 1em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
 }
 
 #ingredientInput {
@@ -68,6 +76,35 @@ header p {
   background: #701509;
   padding: 0.3em;
   margin: 0.5em 0.1em;
+}
+
+#add i {
+  padding-left: 5px;
+}
+
+.ingredient-list {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.ingredient-list li {
+  padding: 0.1em 1em 0.5em 0.6em;
+  margin: 0.3em;
+  border: solid black 2px;
+  border-radius: 40px;
+}
+
+.ingredient-list i {
+  padding-left: 1em;
+}
+
+.results {
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 /* Cards */
 

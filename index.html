@@ -6,6 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Recipe Finder</title>
     <script src="js/script.js" async></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="css/style.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Josefin+Sans|Literata|Lobster&display=swap"
@@ -24,16 +30,33 @@
         <div class="input-settings">
           <input type="text" name="ingredient" id="ingredientInput" value="" />
           <div class="buttons">
-            <button class="btn reset" type="button" id="add">Add</button>
+            <button class="btn reset" type="button" id="add">
+              Add<i class="fas fa-plus-square"></i>
+            </button>
             <button class="btn reset" type="button" id="clear">
               Clear All
             </button>
           </div>
         </div>
-        <p>Results: <span id="results"></span></p>
-        <ul class="ingredient-list"></ul>
+        <ul class="ingredient-list">
+          <!-- <li>
+            apples<button class="delete reset">
+              <i class="fas fa-minus-square"></i>
+            </button>
+          </li>
+          <li>peanut butter<button class="delete reset">
+              <i class="fas fa-minus-square"></i>
+            </button></li>
+          <li>butter<button class="delete reset">
+              <i class="fas fa-minus-square"></i>
+            </button></i></li>
+          <li>apples</li>
+          <li>peanut butter</li>
+          <li>butter</li> -->
+        </ul>
         <input class="reset" type="button" value="Search" id="submit" />
       </form>
+      <p class="results">Results: <span id="results">-</span></p>
     </header>
     <main>
       <div>
