@@ -90,7 +90,7 @@ function populate(count, imagesURL, titles, sourceURL) {
     document.querySelector(".cards").appendChild(li);
   }
 
-  //Display added ingredients and reset ingredients array
+  //Display recipe ingredients and reset ingredients array
   let ingredientDisplay = document.querySelector("#display-ingredients");
   ingredientDisplay.innerHTML = "Ingredients: ";
   for (let i = 0; i < ingredients.length; i++) {
@@ -175,8 +175,8 @@ document.querySelector("#clear").addEventListener("click", () => {
 document
   .querySelector(".ingredient-list")
   .addEventListener("click", deleteIngredient);
-window.addEventListener("load", () => {
-  ingredients = ["strawberry", "banana", "chocolate"];
-  onloadRecipes = true;
-  requestData();
-});
+// window.addEventListener("load", () => {
+//   ingredients = ["strawberry", "banana", "chocolate"];
+//   onloadRecipes = true;
+//   requestData();
+// });

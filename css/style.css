@@ -1,4 +1,12 @@
 /* li .cards should be INLINE-BLOCK */
+
+:root {
+  --primary-color: #a8000b;
+  --secondary-color: #ba252f;
+  --button-color: #c95058;
+  --light-color: #e8b9bc;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -19,17 +27,17 @@ img {
 
 a {
   text-decoration: none;
-  color: white;
+  color: var(--light-color);
 }
 
 /* User Interface */
 header {
   position: relative;
-  background: #220901;
-  color: #9b9b9b;
+  background: var(--primary-color);
+  color: var(--light-color);
   text-align: center;
   border-bottom: solid black 2px;
-  padding: 2em;
+  padding: 2em 0;
   font-size: 1.5em;
   font-family: "Literata", serif;
 }
@@ -41,7 +49,7 @@ h1 {
 }
 
 header p {
-  padding-bottom: 1em;
+  padding-bottom: 3em;
 }
 
 form {
@@ -53,7 +61,10 @@ form {
 
 #ingredientInput {
   height: 2.2em;
-  width: 20em;
+  width: 90%;
+  margin-top: 0.8em;
+  caret-color: var(--primary-color);
+  font: 20px "Josefin Sans", sans-serif;
 }
 
 .reset {
@@ -66,13 +77,9 @@ form {
 }
 
 .btn {
-  background: #701509;
+  background: var(--button-color);
   padding: 0.3em;
   margin: 0.5em 0.1em;
-}
-
-#add {
-  /* margin-right: 1em; */
 }
 
 #clear {
@@ -92,9 +99,9 @@ form {
 }
 
 .ingredient-list li {
-  padding: 0.1em 1em 0.5em 0.6em;
+  padding: 0.1em 0.6em 0.3em 0.6em;
   margin: 0.3em;
-  border: solid black 2px;
+  border: solid var(--button-color) 2px;
   border-radius: 40px;
 }
 
@@ -102,23 +109,35 @@ form {
   padding-left: 1em;
 }
 
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 2.5em;
+  margin: 2em 0;
+}
+
+.search-container i {
+  line-height: 2;
+  width: 50px;
+  border: solid 4px var(--button-color);
+  padding-bottom: 0.15em;
+  cursor: pointer;
+}
+
 #submit {
-  width: 5em;
-  margin: 0 auto;
-  text-transform: uppercase;
-  margin-bottom: 3em;
-  margin-top: 1em;
+  margin: 0;
+  padding-bottom: 0.6em;
 }
 
 .results {
   position: absolute;
   left: 10px;
-  bottom: 0;
 }
 /* Cards */
 
 body {
-  background: #701509;
+  background: var(--secondary-color);
 }
 
 main {
@@ -131,15 +150,16 @@ h2 {
 
 .card {
   display: block;
-  background: #bc3908;
-  margin: 1em 0;
-  border: solid black 2px;
+  background: var(--primary-color);
+  margin: 1em;
+  /* border: solid black 2px; */
   text-align: center;
+  box-shadow: 0px 13px 21px -5px rgba(0, 0, 0, 0.3);
 }
 
 .bottom-card {
   padding: 0.4em 0 0.8em 0;
-  background: #621708;
+  background: var(--primary-color);
 }
 
 .bottom-card h3 {
@@ -148,6 +168,7 @@ h2 {
 
 .bottom-card a {
   color: black;
+  background: var(--secondary-color);
   padding: 0.3em 3em;
   border: solid black 1px;
   border-radius: 80px;
@@ -155,7 +176,11 @@ h2 {
 
 /* CSS Grid for wider screens */
 @supports (grid-area: auto) {
-  @media screen and (min-width: 400px) {
+  @media screen and (min-width: 500px) {
+    #ingredientInput {
+      width: 20em;
+    }
+
     .cards {
       display: grid;
       grid-template-columns: repeat(2, auto);
@@ -163,9 +188,6 @@ h2 {
       align-items: center;
     }
 
-    .card {
-      margin: 0;
-    }
     .card a {
       width: 100%;
     }
@@ -180,10 +202,5 @@ h2 {
     .cards {
       grid-template-columns: repeat(3, 1fr);
     }
-
-    /* .card {
-      display: flex;
-      flex-direction: row;
-    } */
   }
 }

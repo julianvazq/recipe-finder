@@ -26,8 +26,9 @@
         <a href="https://www.food2fork.com/">Food2Fork API</a>
       </p>
       <form>
-        Enter ingredient:
+        <!-- Enter ingredient: -->
         <div class="input-settings">
+          <label for="ingredientInput">Enter an ingredient:</label><br />
           <input type="text" name="ingredient" id="ingredientInput" value="" />
           <div class="buttons">
             <button class="btn reset" type="button" id="add">
@@ -49,22 +50,19 @@
             </button></li>
           <li>butter<button class="delete reset">
               <i class="fas fa-minus-square"></i>
-            </button></i></li>
-          <li>apples</li>
-          <li>peanut butter</li>
-          <li>butter</li> -->
+            </button></i></li> -->
         </ul>
-        <input class="reset btn" type="button" value="Search" id="submit" />
+        <div class="search-container">
+          <label for="submit"><i class="fas fa-search"></i></label>
+          <input class="reset btn" type="button" value="Search" id="submit" />
+        </div>
       </form>
       <p class="results">Results: <span id="results">-</span></p>
     </header>
     <main>
-      <div>
-        <h2 id="display-ingredients">
-          Ingredients: strawberry, banana, chocolate
-        </h2>
-        <ul class="cards">
-          <!-- <li class="card">
+      <h2 id="display-ingredients"></h2>
+      <ul class="cards">
+        <!-- <li class="card">
             <figure>
               <img src="images/camel.jpg" alt="Lines on a tropical leaf." />
             </figure>
@@ -118,8 +116,7 @@
               <a href="#">View recipe</a>
             </div>
           </li> -->
-        </ul>
-      </div>
+      </ul>
     </main>
   </body>
 </html>
