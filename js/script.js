@@ -72,6 +72,7 @@ function populate(count, imagesURL, titles, sourceURL) {
     div.className = "bottom-card";
     var title = document.createElement("h3");
     var anchor = document.createElement("a");
+    anchor.className = "btn";
 
     //Populate elements
     img.src = imagesURL[i];
@@ -123,19 +124,14 @@ function addIngredients(e) {
     if (!ingredients.includes(ingredientInput)) {
       ingredients.push(ingredientInput);
       document.querySelector("form").reset();
+      //Create li (ingredient name + delete button)
       let ingredientElem = document.createElement("li");
-      // let ingredientBtn = document.createElement("button");
-      // ingredientBtn.className = "delete reset";
-      // let deleteIcon = document.createElement("i");
-      // deleteIcon.className = "fas fa-minus-square";
-      // ingredientBtn.appendChild(deleteIcon);
-      // ingredientElem.appendChild(document.createTextNode(ingredientInput));
-      // ingredientElem.appendChild(ingredientBtn);
       ingredientElem.innerHTML =
         ingredientInput +
         '<button class="delete reset"><i class="fas fa-minus-square"></i></button>';
       document.querySelector(".ingredient-list").appendChild(ingredientElem);
     } else {
+      document.querySelector("#ingredientInput").value = "";
       alert("Ingredient you are trying to add is already in the list.");
     }
     return true;
@@ -179,8 +175,8 @@ document.querySelector("#clear").addEventListener("click", () => {
 document
   .querySelector(".ingredient-list")
   .addEventListener("click", deleteIngredient);
-// window.addEventListener("load", () => {
-//   ingredients = ["strawberry", "banana", "chocolate"];
-//   onloadRecipes = true;
-//   requestData();
-// });
+window.addEventListener("load", () => {
+  ingredients = ["strawberry", "banana", "chocolate"];
+  onloadRecipes = true;
+  requestData();
+});

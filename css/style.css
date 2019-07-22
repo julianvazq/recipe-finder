@@ -56,13 +56,6 @@ form {
   width: 20em;
 }
 
-.input-settings {
-  /* width: 20em; */
-}
-
-.buttons {
-}
-
 .reset {
   background: none;
   color: inherit;
@@ -78,8 +71,16 @@ form {
   margin: 0.5em 0.1em;
 }
 
+#add {
+  /* margin-right: 1em; */
+}
+
+#clear {
+  margin-left: 1em;
+}
+
 #add i {
-  padding-left: 5px;
+  padding-left: 10px;
 }
 
 .ingredient-list {
@@ -101,9 +102,17 @@ form {
   padding-left: 1em;
 }
 
+#submit {
+  width: 5em;
+  margin: 0 auto;
+  text-transform: uppercase;
+  margin-bottom: 3em;
+  margin-top: 1em;
+}
+
 .results {
   position: absolute;
-  left: 0;
+  left: 10px;
   bottom: 0;
 }
 /* Cards */
