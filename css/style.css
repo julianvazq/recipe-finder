@@ -79,6 +79,11 @@ form {
   outline: inherit;
 }
 
+.buttons .btn:hover {
+  background: var(--light-color);
+  color: var(--button-color);
+}
+
 .btn {
   background: var(--button-color);
   padding: 0.3em;
@@ -133,48 +138,59 @@ form {
   padding-bottom: 0.6em;
 }
 
+.search-container #submit:hover {
+  background: var(--light-color);
+  color: var(--button-color);
+}
+
 .results {
   text-align: left;
   padding-left: 0.5em;
 }
 /* Cards */
 
-body {
-  background: var(--secondary-color);
-}
-
 main {
+  background: var(--secondary-color);
   font-family: "Josefin Sans", sans-serif;
 }
 
 h2 {
-  padding: 1em;
+  padding: 0.5em;
+  font-size: 2em;
 }
 
 .card {
   display: block;
   background: var(--primary-color);
   margin: 1em;
-  /* border: solid black 2px; */
   text-align: center;
   box-shadow: 0px 13px 21px -5px rgba(0, 0, 0, 0.3);
 }
 
 .bottom-card {
-  padding: 0.4em 0 0.8em 0;
+  padding: 1em 0;
   background: var(--primary-color);
 }
 
 .bottom-card h3 {
-  padding-bottom: 0.7em;
+  margin: 0 1em 1em 1em;
+  padding-bottom: 0.5em;
+  border-bottom: solid black 1px;
 }
 
 .bottom-card a {
+  font-size: 1.2em;
   color: black;
   background: var(--secondary-color);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   padding: 0.3em 3em;
   border: solid black 1px;
-  border-radius: 80px;
+  border-radius: 50px;
+}
+
+.bottom-card a:hover {
+  transform: translateY(-5px);
+  color: var(--light-color);
 }
 
 /* CSS Grid for wider screens */

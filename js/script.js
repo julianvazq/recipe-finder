@@ -1,5 +1,4 @@
 let ingredients = [];
-let onloadRecipes = false;
 
 function requestData() {
   var xmlhttp = new XMLHttpRequest();
@@ -8,13 +7,9 @@ function requestData() {
   var titles = [];
   var sourceURL = [];
 
-  if (!onloadRecipes) {
-    if (!addIngredients()) {
-      return;
-    }
+  if (!addIngredients()) {
+    return;
   }
-
-  onloadRecipes = false;
 
   clearIngredientList();
   clearRecipes();
@@ -88,10 +83,17 @@ function populate(count, imagesURL, titles, sourceURL) {
     li.appendChild(div);
 
     document.querySelector(".cards").appendChild(li);
+
+    document.querySelector("main").scrollIntoView();
   }
 
   //Display recipe ingredients and reset ingredients array
-  // let ingredientDisplay = document.querySelector("#display-ingredients");
+
+  if (document.querySelector("main h2") != null) {
+    document
+      .querySelector("main")
+      .removeChild(document.querySelector("main h2"));
+  }
   let ingredientDisplay = document.createElement("h2");
   ingredientDisplay.innerHTML = "Ingredients: ";
   for (let i = 0; i < ingredients.length; i++) {
@@ -179,8 +181,3 @@ document.querySelector("#clear").addEventListener("click", () => {
 document
   .querySelector(".ingredient-list")
   .addEventListener("click", deleteIngredient);
-// window.addEventListener("load", () => {
-//   ingredients = ["strawberry", "banana", "chocolate"];
-//   onloadRecipes = true;
-//   requestData();
-// });
