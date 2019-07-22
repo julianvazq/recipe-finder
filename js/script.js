@@ -1,6 +1,8 @@
 let ingredients = [];
 
-function requestData() {
+function requestData(e) {
+  e.preventDefault();
+
   var xmlhttp = new XMLHttpRequest();
 
   var imagesURL = [];
