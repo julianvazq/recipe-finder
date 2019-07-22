@@ -7,6 +7,10 @@
   --light-color: #e8b9bc;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -32,11 +36,10 @@ a {
 
 /* User Interface */
 header {
-  position: relative;
   background: var(--primary-color);
   color: var(--light-color);
   text-align: center;
-  border-bottom: solid black 2px;
+  border-bottom: solid var(--button-color) 4px;
   padding: 2em 0;
   font-size: 1.5em;
   font-family: "Literata", serif;
@@ -48,7 +51,7 @@ h1 {
   font-size: 4em;
 }
 
-header p {
+header p:first-of-type {
   padding-bottom: 3em;
 }
 
@@ -131,8 +134,8 @@ form {
 }
 
 .results {
-  position: absolute;
-  left: 10px;
+  text-align: left;
+  padding-left: 0.5em;
 }
 /* Cards */
 

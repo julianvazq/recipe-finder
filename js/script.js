@@ -91,7 +91,8 @@ function populate(count, imagesURL, titles, sourceURL) {
   }
 
   //Display recipe ingredients and reset ingredients array
-  let ingredientDisplay = document.querySelector("#display-ingredients");
+  // let ingredientDisplay = document.querySelector("#display-ingredients");
+  let ingredientDisplay = document.createElement("h2");
   ingredientDisplay.innerHTML = "Ingredients: ";
   for (let i = 0; i < ingredients.length; i++) {
     ingredientDisplay.innerHTML += ingredients[i];
@@ -99,6 +100,9 @@ function populate(count, imagesURL, titles, sourceURL) {
       ingredientDisplay.innerHTML += ", ";
     }
   }
+  document
+    .querySelector("main")
+    .insertBefore(ingredientDisplay, document.querySelector(".cards"));
   ingredients = [];
 }
 
