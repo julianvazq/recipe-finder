@@ -92,19 +92,15 @@ form {
   margin: 0 auto;
 }
 
-.mobile {
+#add {
   display: inline-block;
   margin: 0;
   background: none;
 }
 
-.mobile i {
+#add i {
   transform: translate(-8px, 13px);
   font-size: 2.1em;
-}
-
-.desktop {
-  display: none;
 }
 
 .ingredient-list {
@@ -131,6 +127,8 @@ form {
   display: inline-block;
   width: 150px;
   padding-bottom: 0.6em;
+  background: var(--light-color);
+  color: var(--primary-color);
 }
 
 .search i {
@@ -199,22 +197,6 @@ h2 {
     #ingredientInput {
       width: 20em;
     }
-
-    /* .mobile {
-      display: none;
-    }
-
-    .desktop {
-      display: inline-block;
-    }
-
-    #add i {
-      padding-left: 10px;
-    }
-
-    #clear {
-      margin-left: 1em;
-    } */
 
     .cards {
       display: grid;
