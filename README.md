@@ -1,7 +1,7 @@
-# recipe-finder
+# RECIPE FINDER
 Description: Client-side application that retrieves recipes from the Food2Fork public API.
 
-HTML/CSS/JS
+TECHNOLOGIES USED: HTML/CSS/JS
 
 FEATURES
 -Responsive design
