@@ -34,7 +34,7 @@ function requestData(e) {
       }
       var results = document.querySelector("#results");
       if (myObj.count === 0) {
-        results.innerHTML = "No recipes found with these ingredients.";
+        results.innerHTML = "No recipes found.";
         alert("Sorry, no recipes with these ingredients.");
         ingredients = [];
         return 0;
