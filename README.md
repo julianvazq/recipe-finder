@@ -3,7 +3,7 @@ Description: Client-side application that retrieves recipes from the Food2Fork p
 
 TECHNOLOGIES USED: HTML/CSS/JS
 
-FEATURES
--Responsive design
--User input: add/delete multiple ingredients
+FEATURES<br />
+-Responsive design<br />
+-User input: add/delete multiple ingredients<br />
 -Basic input validation 
