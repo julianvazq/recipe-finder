@@ -30,15 +30,21 @@
         <div class="input-settings">
           <label for="ingredientInput">Enter an ingredient:</label><br />
           <input type="text" name="ingredient" id="ingredientInput" value="" />
-          <div class="buttons">
-            <button class="btn reset" type="button" id="add">
-              Add<i class="fas fa-plus-square"></i>
-            </button>
-            <button class="btn reset" type="button" id="clear">
-              Clear All
-            </button>
-          </div>
+          <!-- Mobile add ingredient button -->
+          <button class="btn reset mobile" type="button" id="add">
+            <i class="fas fa-plus-square"></i>
+          </button>
         </div>
+        <div class="buttons">
+          <!-- Desktop add ingredient button -->
+          <button class="btn reset desktop" type="button" id="add">
+            Add<i class="fas fa-plus-square"></i>
+          </button>
+          <button class="btn reset" type="button" id="clear">
+            Clear All
+          </button>
+        </div>
+
         <ul class="ingredient-list">
           <!-- <li>
             apples<button class="delete reset">

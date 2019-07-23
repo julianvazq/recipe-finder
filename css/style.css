@@ -1,5 +1,3 @@
-/* li .cards should be INLINE-BLOCK */
-
 :root {
   --primary-color: #a8000b;
   --secondary-color: #ba252f;
@@ -64,7 +62,7 @@ form {
 
 #ingredientInput {
   height: 2.2em;
-  width: 90%;
+  width: 80%;
   margin-top: 0.8em;
   caret-color: var(--primary-color);
   font: 20px "Josefin Sans", sans-serif;
@@ -90,12 +88,23 @@ form {
   margin: 0.5em 0.1em;
 }
 
-#clear {
-  margin-left: 1em;
+.input-settings {
+  margin: 0 auto;
 }
 
-#add i {
-  padding-left: 10px;
+.mobile {
+  display: inline-block;
+  margin: 0;
+  background: none;
+}
+
+.mobile i {
+  transform: translate(-8px, 13px);
+  font-size: 2.1em;
+}
+
+.desktop {
+  display: none;
 }
 
 .ingredient-list {
@@ -160,7 +169,7 @@ h2 {
 
 .bottom-card {
   padding: 1em 0;
-  background: var(--primary-color);
+  background: var(--button-color);
 }
 
 .bottom-card h3 {
@@ -191,6 +200,22 @@ h2 {
       width: 20em;
     }
 
+    /* .mobile {
+      display: none;
+    }
+
+    .desktop {
+      display: inline-block;
+    }
+
+    #add i {
+      padding-left: 10px;
+    }
+
+    #clear {
+      margin-left: 1em;
+    } */
+
     .cards {
       display: grid;
       grid-template-columns: repeat(2, auto);
@@ -211,6 +236,12 @@ h2 {
   @media screen and (min-width: 1000px) {
     .cards {
       grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media screen and (min-width: 1300px) {
+    .cards {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }
