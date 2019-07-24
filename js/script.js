@@ -125,7 +125,7 @@ function clearRecipes() {
   }
 }
 
-function addIngredients() {
+function addIngredients(e) {
   let ingredientInput = document.querySelector("#ingredientInput").value;
   if (ingredientInput.length > 0) {
     if (!allLetter(ingredientInput)) {
