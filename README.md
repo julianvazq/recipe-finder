@@ -10,4 +10,4 @@ INCLUDES<br />
 FEATURES<br />
 -User input: add/delete multiple ingredients<br />
 -Basic input validation<br />
--Displays up to 30 recipes
+-Displays up to 30 recipes per query
