@@ -217,7 +217,7 @@ h2 {
 
 /* CSS Grid for wider screens */
 @supports (grid-area: auto) {
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 535px) {
     #ingredientInput {
       width: 20em;
     }
