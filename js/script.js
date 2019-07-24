@@ -125,9 +125,12 @@ function clearRecipes() {
   }
 }
 
-function addIngredients(e) {
+function addIngredients() {
   let ingredientInput = document.querySelector("#ingredientInput").value;
   if (ingredientInput.length > 0) {
+    if (!allLetter(ingredientInput)) {
+      return false;
+    } 
     //IF input not empty, push to array and return true
     if (!ingredients.includes(ingredientInput)) {
       ingredients.push(ingredientInput);
@@ -141,7 +144,7 @@ function addIngredients(e) {
     } else {
       document.querySelector("#ingredientInput").value = "";
       alert("Ingredient you are trying to add is already in the list.");
-    }
+    } 
     return true;
   } else if (ingredientInput.length == 0 && ingredients.length > 0) {
     //If user try to add with empty input, return false
@@ -155,6 +158,20 @@ function addIngredients(e) {
     return false;
   }
 }
+
+function allLetter(inputtxt)
+  {
+   var letters = /^[a-zA-Z ]+$/;
+   if(inputtxt.match(letters))
+     {
+      return true;
+     }
+   else
+     {
+     alert("Please enter a valid ingredient (no numbers or special characters).");
+     return 0;
+     }
+  }
 
 function deleteIngredient(e) {
   e.preventDefault();
