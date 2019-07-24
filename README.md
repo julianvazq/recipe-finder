@@ -9,5 +9,5 @@ INCLUDES<br />
 
 FEATURES<br />
 -User input: add/delete multiple ingredients<br />
--Basic input validation
+-Basic input validation<br />
 -Displays up to 30 recipes
