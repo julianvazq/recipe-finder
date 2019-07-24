@@ -29,7 +29,7 @@ function requestData(e) {
     if (xmlhttp.readyState === xmlhttp.DONE && xmlhttp.status === 200) {
       var myObj = JSON.parse(xmlhttp.responseText);
       if (myObj.hasOwnProperty("error")) {
-        alert("Sorry, exceeded allowed API calls for the day.");
+        alert("Sorry, exceeded free allowed API calls for the day.");
         return 0;
       }
       var results = document.querySelector("#results");
