@@ -38,7 +38,7 @@ header {
   color: var(--light-color);
   text-align: center;
   border-bottom: solid var(--button-color) 1px;
-  padding-top: 1em;
+  padding: 1em 0;
   font-size: 1.5em;
   font-family: "Literata", serif;
 }
