@@ -16,6 +16,10 @@ html {
 }
 
 /* General Styling */
+body {
+  background: var(--primary-color);
+}
+
 ul {
   list-style: none;
 }
