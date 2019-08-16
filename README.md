@@ -7,8 +7,9 @@
   * Grid
   * Flexbox
 * Vanilla JavaScript
-  *Input validation
-  *DOM manipulation
+  * Input validation
+  * DOM manipulation
+  * AJAX calls
 
 ## Features
 * Responsive design
