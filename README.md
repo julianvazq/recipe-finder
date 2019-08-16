@@ -1,7 +1,7 @@
 # RECIPE FINDER
 Description: Client-side application that retrieves recipes using the [Food2Fork public API](https://www.food2fork.com/about/api)
 
-## TOOLS
+## Tools
 * Semantic HTML
 * CSS
   * Grid
@@ -10,10 +10,10 @@ Description: Client-side application that retrieves recipes using the [Food2Fork
   *Input validation
   *DOM manipulation
 
-## FEATURES
+## Features
 * Responsive design
 * Search for multiple ingredients
 * Displays up to 30 recipes per query
 
-## LIMITATIONS
+## Limitations
 * Maximum of 50 queries per day (free plan)
