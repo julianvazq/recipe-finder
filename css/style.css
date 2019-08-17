@@ -87,22 +87,31 @@ form {
   background: var(--button-color);
   padding: 0.3em;
   margin: 0.5em 0.1em;
-  box-shadow: 0px 8px 48px -7px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 5px 15px 5px rgba(0, 0, 0, 0.4);
+}
+
+.search-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #add {
-  display: inline-block;
   margin: 0;
-  background: none;
-  transform: translate(-8px, 13px);
   padding: 0;
-  padding-left: 0.2em;
+  background: none;
+  transform: translate(3px, -18px);
   font-size: 2.1em;
   box-shadow: none;
+  height: 45px;
 }
 
 #add i:hover {
   opacity: 0.8;
+}
+
+.error-msg {
+  padding-bottom: 0.5em;
 }
 
 #clear {
@@ -111,7 +120,8 @@ form {
   margin-top: 1.5em;
 }
 
-#clear:hover {
+#clear:hover,
+#clear:focus {
   background: var(--light-color);
   color: var(--button-color);
 }
@@ -149,7 +159,8 @@ form {
   padding-right: 0.3em;
 }
 
-.search:hover {
+.search:hover,
+.search:focus {
   background: var(--light-color);
   color: var(--button-color);
 }
@@ -194,7 +205,7 @@ h2 {
 }
 
 .bottom-card {
-  padding: 1em 0;
+  padding: 1em 0 1.3em 0;
   background: var(--button-color);
 }
 
@@ -205,11 +216,11 @@ h2 {
 }
 
 .bottom-card a {
-  font-size: 1.2em;
+  font-size: 1.3em;
   color: black;
   background: var(--secondary-color);
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  padding: 0.3em 3em;
+  padding: 0.5em 3em;
   border: solid black 1px;
   border-radius: 50px;
 }
@@ -217,6 +228,7 @@ h2 {
 .bottom-card a:hover {
   transform: translateY(-5px);
   color: var(--light-color);
+  border-color: var(--light-color);
 }
 
 /* CSS Grid for wider screens */
@@ -258,6 +270,37 @@ h2 {
   @media screen and (min-width: 1000px) {
     .cards {
       grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bottom-card {
+      position: absolute;
+      bottom: -65px;
+      width: 100%;
+      z-index: 99;
+      background: none;
+      transition: bottom 0.3s ease-out;
+    }
+
+    .card:hover .bottom-card,
+    .card:focus .bottom-card {
+      bottom: 0;
+    }
+
+    .bottom-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.7;
+      background: var(--button-color);
+      z-index: -1;
     }
   }
 

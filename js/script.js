@@ -29,19 +29,19 @@ function requestData(e) {
     if (xmlhttp.readyState === xmlhttp.DONE && xmlhttp.status === 200) {
       var myObj = JSON.parse(xmlhttp.responseText);
       if (myObj.hasOwnProperty("error")) {
-        alert("Sorry, exceeded free allowed API calls for the day.");
+        errorDisplay("Sorry, exceeded free allowed API calls for the day.");
         return 0;
       }
       var results = document.querySelector("#results");
       if (myObj.count === 0) {
         results.innerHTML = "No recipes found.";
-        alert("Sorry, no recipes with these ingredients.");
+        errorDisplay("Sorry, no recipes found with these ingredients.");
         ingredients = [];
         return 0;
       }
       results.innerHTML = myObj.count;
       for (let i = 0; i < myObj.count; i++) {
-        //Store image_url property in array
+        //Store image_url, titles and source_Url properties in arrays
         if (myObj.recipes[i].hasOwnProperty("image_url")) {
           imagesURL.push(myObj.recipes[i].image_url);
           titles.push(myObj.recipes[i].title);
@@ -51,7 +51,7 @@ function requestData(e) {
       // Populate images and titles
       populate(myObj.count, imagesURL, titles, sourceURL);
     } else {
-      alert("There was a problem with the request.");
+      errorDisplay("There was a problem with the request.");
     }
   };
 
@@ -143,20 +143,28 @@ function addIngredients(e) {
       document.querySelector(".ingredient-list").appendChild(ingredientElem);
     } else {
       document.querySelector("#ingredientInput").value = "";
-      alert("Ingredient you are trying to add is already in the list.");
+      errorDisplay("Ingredient you are trying to add is already in the list.");
     }
     return true;
+    //If user click "search" button with empty input but with ingredients in list, return true
   } else if (ingredientInput.length == 0 && ingredients.length > 0) {
-    //If user try to add with empty input, return false
+    //If user click "add" button with empty input, return false
     if (e != undefined) {
-      alert("Please enter an ingredient.");
+      errorDisplay("Please enter an ingredient.");
       return false;
     }
     return true;
   } else {
-    alert("Please enter an ingredient.");
+    errorDisplay("Please enter an ingredient.");
     return false;
   }
+}
+
+function errorDisplay(msg) {
+  errorElem = document.querySelector(".error-msg");
+  errorElem.innerHTML = msg;
+
+  setTimeout(() => (errorElem.innerHTML = ""), 3000);
 }
 
 function allLetter(inputtxt) {
@@ -164,7 +172,7 @@ function allLetter(inputtxt) {
   if (inputtxt.match(letters)) {
     return true;
   } else {
-    alert(
+    errorDisplay(
       "Please enter a valid ingredient (no numbers or special characters)."
     );
     return 0;
