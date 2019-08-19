@@ -1,6 +1,6 @@
 let ingredients = [];
 
-function requestData(e) {
+async function requestData(e) {
   e.preventDefault();
 
   var xmlhttp = new XMLHttpRequest();
@@ -23,40 +23,78 @@ function requestData(e) {
     url += ingredients[i] + ",";
   }
 
-  xmlhttp.open("GET", url, false);
+  //Fetch API
+  try {
+    const res = await fetch(url);
+    const myObj = await res.json();
 
-  xmlhttp.onreadystatechange = () => {
-    if (xmlhttp.readyState === xmlhttp.DONE && xmlhttp.status === 200) {
-      var myObj = JSON.parse(xmlhttp.responseText);
-      if (myObj.hasOwnProperty("error")) {
-        errorDisplay("Sorry, exceeded free allowed API calls for the day.");
-        return 0;
-      }
-      var results = document.querySelector("#results");
-      if (myObj.count === 0) {
-        results.innerHTML = "No recipes found.";
-        errorDisplay("Sorry, no recipes found with these ingredients.");
-        ingredients = [];
-        return 0;
-      }
-      results.innerHTML = myObj.count;
-      for (let i = 0; i < myObj.count; i++) {
-        //Store image_url, titles and source_Url properties in arrays
-        if (myObj.recipes[i].hasOwnProperty("image_url")) {
-          imagesURL.push(myObj.recipes[i].image_url);
-          titles.push(myObj.recipes[i].title);
-          sourceURL.push(myObj.recipes[i].source_url);
-        }
-      }
-      // Populate images and titles
-      populate(myObj.count, imagesURL, titles, sourceURL);
-    } else {
-      errorDisplay("There was a problem with the request.");
+    if (myObj.hasOwnProperty("error")) {
+      errorDisplay("Sorry, exceeded free allowed API calls for the day.");
+      return;
     }
-  };
-
-  xmlhttp.send();
+    var results = document.querySelector("#results");
+    if (myObj.count === 0) {
+      results.innerHTML = "No recipes found.";
+      errorDisplay("Sorry, no recipes found with these ingredients.");
+      ingredients = [];
+      return;
+    }
+    results.innerHTML = myObj.count;
+    for (let i = 0; i < myObj.count; i++) {
+      //Store image_url, titles and source_Url properties in arrays
+      if (myObj.recipes[i].hasOwnProperty("image_url")) {
+        imagesURL.push(myObj.recipes[i].image_url);
+        titles.push(myObj.recipes[i].title);
+        sourceURL.push(myObj.recipes[i].source_url);
+      }
+    }
+    // Populate images and titles
+    await populate(myObj.count, imagesURL, titles, sourceURL);
+  } catch (err) {
+    errorDisplay("There was a problem with the request.");
+    return;
+  }
 }
+
+//HTTP Request (keeping it as a comment for future reference to FETCH API superiorness)
+/*
+
+xmlhttp.open("GET", url, false);
+
+xmlhttp.onreadystatechange = () => {
+  if (xmlhttp.readyState === xmlhttp.DONE && xmlhttp.status === 200) {
+    var myObj = JSON.parse(xmlhttp.responseText);
+    if (myObj.hasOwnProperty("error")) {
+      errorDisplay("Sorry, exceeded free allowed API calls for the day.");
+      return;
+    }
+    var results = document.querySelector("#results");
+    if (myObj.count === 0) {
+      results.innerHTML = "No recipes found.";
+      errorDisplay("Sorry, no recipes found with these ingredients.");
+      ingredients = [];
+      return;
+    }
+    results.innerHTML = myObj.count;
+    for (let i = 0; i < myObj.count; i++) {
+      //Store image_url, titles and source_Url properties in arrays
+      if (myObj.recipes[i].hasOwnProperty("image_url")) {
+        imagesURL.push(myObj.recipes[i].image_url);
+        titles.push(myObj.recipes[i].title);
+        sourceURL.push(myObj.recipes[i].source_url);
+      }
+    }
+    // Populate images and titles
+    populate(myObj.count, imagesURL, titles, sourceURL);
+  } else {
+    errorDisplay("There was a problem with the request.");
+  }
+};
+
+xmlhttp.send();
+}
+
+*/
 
 function populate(count, imagesURL, titles, sourceURL) {
   for (let i = 0; i < count; i++) {
@@ -175,7 +213,7 @@ function allLetter(inputtxt) {
     errorDisplay(
       "Please enter a valid ingredient (no numbers or special characters)."
     );
-    return 0;
+    return;
   }
 }
 
