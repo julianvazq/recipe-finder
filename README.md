@@ -9,7 +9,8 @@
 * Vanilla JavaScript
   * Input validation
   * DOM manipulation
-  * AJAX calls
+  * Fetch API
+  * Async/await
 
 ## Features
 * Responsive design
