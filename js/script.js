@@ -41,15 +41,15 @@ async function requestData(e) {
     }
     results.innerHTML = myObj.count;
     for (let i = 0; i < myObj.count; i++) {
-      //Store image_url, titles and source_Url properties in arrays
+      // Populate images, titles and recipe urls
       if (myObj.recipes[i].hasOwnProperty("image_url")) {
-        imagesURL.push(myObj.recipes[i].image_url);
-        titles.push(myObj.recipes[i].title);
-        sourceURL.push(myObj.recipes[i].source_url);
+        populate(
+          myObj.recipes[i].image_url,
+          myObj.recipes[i].title,
+          myObj.recipes[i].source_url
+        );
       }
     }
-    // Populate images and titles
-    await populate(myObj.count, imagesURL, titles, sourceURL);
   } catch (err) {
     errorDisplay("There was a problem with the request.");
     return;
@@ -96,36 +96,34 @@ xmlhttp.send();
 
 */
 
-function populate(count, imagesURL, titles, sourceURL) {
-  for (let i = 0; i < count; i++) {
-    //Create elements and add classes
-    var li = document.createElement("li");
-    li.className = "card";
-    var figure = document.createElement("figure");
-    var img = document.createElement("img");
-    var div = document.createElement("div");
-    div.className = "bottom-card";
-    var title = document.createElement("h3");
-    var anchor = document.createElement("a");
-    anchor.className = "btn";
+function populate(imageURL, titleImg, sourceURL) {
+  //Create elements and add classes
+  var li = document.createElement("li");
+  li.className = "card";
+  var figure = document.createElement("figure");
+  var img = document.createElement("img");
+  var div = document.createElement("div");
+  div.className = "bottom-card";
+  var title = document.createElement("h3");
+  var anchor = document.createElement("a");
+  anchor.className = "btn";
 
-    //Populate elements
-    img.src = imagesURL[i];
-    title.innerHTML = titles[i];
-    anchor.innerHTML = "View recipe";
-    anchor.href = sourceURL[i];
+  //Populate elements
+  img.src = imageURL;
+  title.innerHTML = titleImg;
+  anchor.innerHTML = "View recipe";
+  anchor.href = sourceURL;
 
-    //Add elements to document
-    figure.appendChild(img);
-    div.appendChild(title);
-    div.appendChild(anchor);
-    li.appendChild(figure);
-    li.appendChild(div);
+  //Add elements to document
+  figure.appendChild(img);
+  div.appendChild(title);
+  div.appendChild(anchor);
+  li.appendChild(figure);
+  li.appendChild(div);
 
-    document.querySelector(".cards").appendChild(li);
+  document.querySelector(".cards").appendChild(li);
 
-    document.querySelector("main").scrollIntoView();
-  }
+  document.querySelector("main").scrollIntoView();
 
   //Display recipe ingredients and reset ingredients array
 
