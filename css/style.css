@@ -204,6 +204,14 @@ h2 {
   margin: 2em 1em;
   text-align: center;
   box-shadow: 11px 16px 41px -6px rgba(0, 0, 0, 0.71);
+  opacity: 0;
+  transform: translate(-100px, -100px);
+  transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+}
+
+.card-visible {
+  opacity: 1;
+  transform: translate(0, 0);
 }
 
 .bottom-card {
@@ -240,6 +248,10 @@ h2 {
       width: 20em;
     }
 
+    main h2 {
+      padding: 1em 0 2em 0.5em;
+    }
+
     .cards {
       display: grid;
       grid-template-columns: repeat(2, auto);
@@ -260,10 +272,6 @@ h2 {
       flex-direction: column;
     }
 
-    /* .card:nth-of-type(odd) {
-  grid-row: span 2;
-} */
-
     .card a {
       width: 100%;
     }
@@ -271,6 +279,29 @@ h2 {
     .caption {
       display: flex;
       align-items: flex-end;
+    }
+
+    .card figure {
+      position: relative;
+    }
+
+    /* Figure overlay effect */
+    .card figure::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      transition: background-color 0.3s ease-in;
+    }
+
+    .card:hover figure::before,
+    .card:focus figure::before {
+      background-color: rgba(0, 0, 0, 0);
     }
   }
 

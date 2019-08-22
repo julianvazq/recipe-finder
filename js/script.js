@@ -3,12 +3,6 @@ let ingredients = [];
 async function requestData(e) {
   e.preventDefault();
 
-  var xmlhttp = new XMLHttpRequest();
-
-  var imagesURL = [];
-  var titles = [];
-  var sourceURL = [];
-
   if (!addIngredients()) {
     return;
   }
@@ -32,23 +26,35 @@ async function requestData(e) {
       errorDisplay("Sorry, exceeded free allowed API calls for the day.");
       return;
     }
+
     var results = document.querySelector("#results");
+    let main = document.querySelector("main");
+
     if (myObj.count === 0) {
+      main.style.height = "0vh";
       results.innerHTML = "No recipes found.";
       errorDisplay("Sorry, no recipes found with these ingredients.");
       ingredients = [];
       return;
     }
     results.innerHTML = myObj.count;
+
+    displayIngredientsAfterQuery();
+    ingredients = [];
+    main.style.height = "100vh";
+    main.scrollIntoView();
+
     for (let i = 0; i < myObj.count; i++) {
-      // Populate images, titles and recipe urls
-      if (myObj.recipes[i].hasOwnProperty("image_url")) {
-        populate(
-          myObj.recipes[i].image_url,
-          myObj.recipes[i].title,
-          myObj.recipes[i].source_url
-        );
-      }
+      // Populate images, titles and recipe urls one at a time
+      setTimeout(() => {
+        if (myObj.recipes[i].hasOwnProperty("image_url")) {
+          populate(
+            myObj.recipes[i].image_url,
+            myObj.recipes[i].title,
+            myObj.recipes[i].source_url
+          );
+        }
+      }, i * 250);
     }
   } catch (err) {
     errorDisplay("There was a problem with the request.");
@@ -56,9 +62,10 @@ async function requestData(e) {
   }
 }
 
-//HTTP Request (keeping it as a comment for future reference to FETCH API superiorness)
-/*
+/*HTTP Request (keeping it as a comment for future reference)
 
+
+var xmlhttp = new XMLHttpRequest();
 xmlhttp.open("GET", url, false);
 
 xmlhttp.onreadystatechange = () => {
@@ -97,36 +104,28 @@ xmlhttp.send();
 */
 
 function populate(imageURL, titleImg, sourceURL) {
-  //Create elements and add classes
+  //Create cards
   var li = document.createElement("li");
   li.className = "card";
-  var figure = document.createElement("figure");
-  var img = document.createElement("img");
-  var div = document.createElement("div");
-  div.className = "bottom-card";
-  var title = document.createElement("h3");
-  var anchor = document.createElement("a");
-  anchor.className = "btn";
 
-  //Populate elements
-  img.src = imageURL;
-  title.innerHTML = titleImg;
-  anchor.innerHTML = "View recipe";
-  anchor.href = sourceURL;
+  li.innerHTML = `
+  <figure>
+    <img src="${imageURL}">
+  </figure>
+  <div class="bottom-card">
+    <h3>${titleImg}</h3>
+    <a class="btn" href="${sourceURL}">View recipe</a>
+  </div>`;
 
-  //Add elements to document
-  figure.appendChild(img);
-  div.appendChild(title);
-  div.appendChild(anchor);
-  li.appendChild(figure);
-  li.appendChild(div);
-
+  //Fade in effect
+  setTimeout(() => {
+    li.classList.add("card-visible");
+  }, 500);
   document.querySelector(".cards").appendChild(li);
+}
 
-  document.querySelector("main").scrollIntoView();
-
+function displayIngredientsAfterQuery() {
   //Display recipe ingredients and reset ingredients array
-
   if (document.querySelector("main h2") != null) {
     document
       .querySelector("main")
@@ -143,7 +142,6 @@ function populate(imageURL, titleImg, sourceURL) {
   document
     .querySelector("main")
     .insertBefore(ingredientDisplay, document.querySelector(".cards"));
-  ingredients = [];
 }
 
 function clearIngredientList() {
