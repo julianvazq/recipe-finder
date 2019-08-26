@@ -31,7 +31,7 @@ async function requestData(e) {
     let main = document.querySelector("main");
 
     if (myObj.count === 0) {
-      main.style.height = "0vh";
+      main.style.display = "none";
       results.innerHTML = "No recipes found.";
       errorDisplay("Sorry, no recipes found with these ingredients.");
       ingredients = [];
@@ -41,6 +41,7 @@ async function requestData(e) {
 
     displayIngredientsAfterQuery();
     ingredients = [];
+    main.style.display = "block";
     main.style.height = "100vh";
     main.scrollIntoView();
 
@@ -241,3 +242,13 @@ document.querySelector("#clear").addEventListener("click", () => {
 document
   .querySelector(".ingredient-list")
   .addEventListener("click", deleteIngredient);
+
+
+window.addEventListener("load", () => {
+  if (document.documentElement.clientWidth > 630) {
+  setTimeout(() => {
+    document.querySelector("h1").style.opacity = 1;
+    document.querySelector("h1").style.letterSpacing = "8px";
+  }, 400);
+}}); 
+
