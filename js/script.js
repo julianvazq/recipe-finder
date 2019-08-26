@@ -243,12 +243,11 @@ document
   .querySelector(".ingredient-list")
   .addEventListener("click", deleteIngredient);
 
-
 window.addEventListener("load", () => {
   if (document.documentElement.clientWidth > 630) {
-  setTimeout(() => {
+    setTimeout(() => {
+      document.querySelector("h1").style.letterSpacing = "8px";
+    }, 400);
     document.querySelector("h1").style.opacity = 1;
-    document.querySelector("h1").style.letterSpacing = "8px";
-  }, 400);
-}}); 
-
+  }
+});
