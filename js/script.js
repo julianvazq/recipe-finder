@@ -247,7 +247,7 @@ window.addEventListener("load", () => {
   if (document.documentElement.clientWidth > 630) {
     setTimeout(() => {
       document.querySelector("h1").style.letterSpacing = "8px";
-    }, 400);
+    }, 800);
     document.querySelector("h1").style.opacity = 1;
   }
 });

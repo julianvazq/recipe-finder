@@ -76,12 +76,16 @@ form {
 }
 
 #ingredientInput {
-  height: 2.2em;
+  height: 2.1em;
   width: 80%;
   margin: 1em 0;
   caret-color: var(--primary-color);
   font: 20px "Josefin Sans", sans-serif;
   box-shadow: 3px 18px 47px -18px rgba(21, 0, 0, 0.43);
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  background: rgb(235, 223, 223);
+  border: none;
 }
 
 .reset {
