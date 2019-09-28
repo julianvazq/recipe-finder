@@ -42,7 +42,7 @@ async function requestData(e) {
     displayIngredientsAfterQuery();
     ingredients = [];
     main.style.display = "block";
-    main.style.height = "100vh";
+    main.style.height = "655vh";
     main.scrollIntoView();
 
     for (let i = 0; i < myObj.count; i++) {
