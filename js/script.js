@@ -242,12 +242,3 @@ document.querySelector("#clear").addEventListener("click", () => {
 document
   .querySelector(".ingredient-list")
   .addEventListener("click", deleteIngredient);
-
-window.addEventListener("load", () => {
-  if (document.documentElement.clientWidth > 630) {
-    setTimeout(() => {
-      document.querySelector("h1").style.letterSpacing = "8px";
-    }, 2000);
-    document.querySelector("h1").style.opacity = 1;
-  }
-});
